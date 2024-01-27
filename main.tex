@@ -14,27 +14,35 @@
 \maketitle
 
 \section{Introduction}
-Linear Algebra has many real-world applications, including to artificial intelligence, economics, video game graphics, and even basic geometry. One of the most interesting applications of linear algebra is cryptography, “the study of the techniques of writing and decoding message in code” \cite{ref1:1}. 
+Linear Algebra has many real-world applications, including to artificial intelligence, economics, video game graphics, and even basic geometry. One of the most interesting applications of linear algebra is cryptography, “the study of the techniques of writing and decoding message in code”\cite{ref1:1}. 
 
 \section{Cryptography: What is it?}
  One may be more familiar with the term ``encryption" rather than cryptography. Encryption is the act of ``performing" cryptography, and is defined as the transformation of data into some type of form that is unreadable to the human eye. Decryption is the opposite of encryption - the transformation of unreadable data into something that is readable. Some other common cryptography terms are ``plaintext" and ``ciphertext." Plaintext is the message that is being encrypted and ciphertext is the information that is revealed after the plaintext has been decrypted \cite{ref1:1}. The ``key" is the method used to decipher the message. In certain cases, encryption and decryption use the same key. However, in more complex cases, encryption and decryption may use different keys to move between the plaintext and ciphertext. Below is a set of equations for a simple cryptography process where $P$ is the plaintext, $C$ is the ciphertext, $E$ is the encryption method, $D$ is the decryption method, and $k$ is the key \cite{ref2:2}.
 
-{\center $C = E_{k}(P)$
-
+{\center $C = E_{k}(P)$\\
 $P = D_{k}(C)$
 \endcenter}
 
-
 \section{Cryptography: Why do we need it?}
-The main purpose of cryptography is to ensure privacy and keep information hidden. However, there are a few other functions of cryptography other than privacy and confidentiality. Cryptography also relates to authentication: the process of proving one’s identity online as well as integrity: a way of assuring that the receiver has received the message in its intended form \cite{ref2:2}. There is also non-repudiation: a mechanism to prove that the person sending the message actually sent that message and key exchange: a method in which the key is sent between the sender and the receiver of the message \cite{ref2:2}. The general term cryptography is associated with the development and creation of the “mathematical algorithms used to encrypt and decrypt messages,” while cryptoanalysis deals with breaking down of encryptions and analyzing them \cite{ref2:2}.
+Personal financial information such as credit card numbers, paychecks, and bank statements are all stored online. In addition, sensitive information like electronic health records can often be accessed on the web through a health services patient portal. Cryptography is essential to ensuring the privacy of these types of information.\\
 
-\section{Basics: The Caesar Cipher}
+Kessler states that there are five main functions of cryptography \cite{ref2:2}:
+\begin{enumerate}
+    \item Confidentiality: ensuring that no one can read the message other than the intended receiver.
+    \item Authentication: the process of proving one’s identity online.
+    \item Integrity: a way of assuring that the receiver has received the message in its intended form.
+    \item Non-repudiation: a mechanism to prove that the person sending the message actually sent that message.
+    \item Key exchange: a method in which the key is sent between the sender and the receiver of the message in order to decrypt the encryped message.
+\end{enumerate}
+%In general, cryptography is associated with the development and creation of the “mathematical algorithms used to encrypt and decrypt messages,” while cryptoanalysis deals with breaking down encryptions and analyzing them \cite{ref2:2}.
+
+\section{Cryptography Basics: The Caesar Cipher}
 One of the most basic examples of cryptography is called the Caesar Cipher which is also known as the shift cipher. The Caesar Cipher is more or less a substitution cipher where each letter in the plaintext is replaced with another letter. This replacement letter corresponds to a certain number of letters shifted up or down in the alphabet, determined by the Caesar Cipher key. For example, if one had a Caesar Cipher key of +3, this would correspond to shifting each letter in the message up three units in the alphabet. “Up” also means to the “left” in this sense, since you are moving three units up the alphabet towards the letter “A.” Most Caesar ciphers only use positive integers as a shift “up” the alphabet. However, if the Caesar Cipher key happened to be -5, the letters in the message would be shifted “down” 5 letters. The letter “A” would correspond to “F,” “B” to “G,” and so on… On another note, in simpler terms, a key shift of +3 could also be called a “left shift of 3.”\\
 
-\includegraphics[scale=0.46]{caesar_cipher}
+\includegraphics[scale=0.47]{caesar_cipher}
 % caption?
 
-\subsection{The Caesar Cipher: Mathematical Equations}
+\subsection{Mathematics}
 In mathematical terms, the encryption of the Caesar Cipher can be expressed in this way \cite{ref3:3}:
 
 $$ E_{n}(x) = x + n  (\text{mod}26)$$
@@ -46,7 +54,7 @@ $$ D_{n}(x) = x - n  (\text{mod}26)$$
 \noindent
 The Caesar Cipher is a simple and well-known form of encryption that is quite easy to learn and teach others. A website for performing simple encryptions and decryptions can be found at the fifth reference source. Nevertheless, the Caesar Cipher is not a very safe or reliable form of encryption in today’s modern world. Next, we will be discussing a more advanced form of cryptography directly relating to things we have learned in linear algebra.
 
-\section{More Advanced Cryptography: Incorporating Linear Algebra}
+\section{Incorporating Linear Algebra}
 Many governments in this day and age are using more and more sophisticated and complicated methods of coding and decoding to try and keep information private. One of the best ways of performing encryptions is with a simple 3 by 3 matrix. The first matrix given is dubbed the “encoding matrix” while its inverse is called the “decoding matrix” \cite{ref4:4}.
 
 \subsection{Example 1}
