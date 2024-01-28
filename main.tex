@@ -17,7 +17,7 @@
 Linear Algebra has many real-world applications, including to artificial intelligence, economics, video game graphics, and even basic geometry. One of the most interesting applications of linear algebra is cryptography, “the study of the techniques of writing and decoding message in code”\cite{ref1:1}. 
 
 \section{Cryptography: What is it?}
- One may be more familiar with the term ``encryption" rather than cryptography. Encryption is the act of ``performing" cryptography, and is defined as the transformation of data into some type of form that is unreadable to the human eye. Decryption is the opposite of encryption - the transformation of unreadable data into something that is readable. Some other common cryptography terms are ``plaintext" and ``ciphertext." Plaintext is the message that is being encrypted and ciphertext is the information that is revealed after the plaintext has been decrypted \cite{ref1:1}. The ``key" is the method used to decipher the message. In certain cases, encryption and decryption use the same key. However, in more complex cases, encryption and decryption may use different keys to move between the plaintext and ciphertext. Below is a set of equations for a simple cryptography process where $P$ is the plaintext, $C$ is the ciphertext, $E$ is the encryption method, $D$ is the decryption method, and $k$ is the key \cite{ref2:2}.
+ One may be more familiar with the term ``encryption" rather than cryptography. Encryption is defined as the transformation of data into some type of form that is unreadable to the human eye. Decryption is the opposite of encryption - the transformation of unreadable data into something that is readable. Some other common cryptography terms are ``plaintext" and ``ciphertext." Plaintext is the message that is being encrypted and ciphertext is the information that is revealed after the plaintext has been decrypted \cite{ref1:1}. The ``key" is the method used to decipher the message. In certain cases, encryption and decryption use the same key. However, in more complex cases, encryption and decryption may use different keys to move between the plaintext and ciphertext. Below is a set of equations for a simple cryptography process where $P$ is the plaintext, $C$ is the ciphertext, $E$ is the encryption method, $D$ is the decryption method, and $k$ is the key \cite{ref2:2}.
 
 {\center $C = E_{k}(P)$\\
 $P = D_{k}(C)$
@@ -36,25 +36,28 @@ Kessler states that there are five main functions of cryptography \cite{ref2:2}:
 \end{enumerate}
 %In general, cryptography is associated with the development and creation of the “mathematical algorithms used to encrypt and decrypt messages,” while cryptoanalysis deals with breaking down encryptions and analyzing them \cite{ref2:2}.
 
-\section{Cryptography Basics: The Caesar Cipher}
-One of the most basic examples of cryptography is called the Caesar Cipher which is also known as the shift cipher. The Caesar Cipher is more or less a substitution cipher where each letter in the plaintext is replaced with another letter. This replacement letter corresponds to a certain number of letters shifted up or down in the alphabet, determined by the Caesar Cipher key. For example, if one had a Caesar Cipher key of +3, this would correspond to shifting each letter in the message up three units in the alphabet. “Up” also means to the “left” in this sense, since you are moving three units up the alphabet towards the letter “A.” Most Caesar ciphers only use positive integers as a shift “up” the alphabet. However, if the Caesar Cipher key happened to be -5, the letters in the message would be shifted “down” 5 letters. The letter “A” would correspond to “F,” “B” to “G,” and so on… On another note, in simpler terms, a key shift of +3 could also be called a “left shift of 3.”\\
+\section{The Caesar Cipher}
+One of the most basic examples of cryptography is the Caesar Cipher, also known as the shift cipher. The Caesar Cipher is solved using a substitution process where each letter in the plaintext is replaced with another letter. The replacement letter is determined by the shift key. For example, a shift key of $+3$ should shift each letter in the message up three units. Most Caesar Ciphers only use positive integers as the shift key. However, a shift key can also be negative, resulting in a shift down the alphabet. A shift key of $+3$ is also known as a ``left shift of 3,” illustrated in Figure 1.\\
 
-\includegraphics[scale=0.47]{caesar_cipher}
-% caption?
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{caesar_cipher}
+    \caption{Caesar Cipher key of $+3$}
+    \label{fig:enter-label}
+\end{figure}
 
 \subsection{Mathematics}
-In mathematical terms, the encryption of the Caesar Cipher can be expressed in this way \cite{ref3:3}:
+The encryption of a Caesar Cipher can be expressed as an equation \cite{ref3:3}:
 
-$$ E_{n}(x) = x + n  (\text{mod}26)$$
+$$ E_{n}(x) = x + n  (\text{mod }26)$$\\
+The decryption process can be expressed similarly.
 
-Conversely, the decryption equation can be expressed like this:
-
-$$ D_{n}(x) = x - n  (\text{mod}26)$$
+$$ D_{n}(x) = x - n  (\text{mod }26)$$
 
 \noindent
-The Caesar Cipher is a simple and well-known form of encryption that is quite easy to learn and teach others. A website for performing simple encryptions and decryptions can be found at the fifth reference source. Nevertheless, the Caesar Cipher is not a very safe or reliable form of encryption in today’s modern world. Next, we will be discussing a more advanced form of cryptography directly relating to things we have learned in linear algebra.
+The Caesar Cipher is a simple and well-known form of encryption that is easy to understand. However, it is not a safe or reliable way to encrypt sensitive information. There are many more advanced forms of cryptography, some of which rely on linear algebraic operations.
 
-\section{Incorporating Linear Algebra}
+\section{Linear Algebra Applications}
 Many governments in this day and age are using more and more sophisticated and complicated methods of coding and decoding to try and keep information private. One of the best ways of performing encryptions is with a simple 3 by 3 matrix. The first matrix given is dubbed the “encoding matrix” while its inverse is called the “decoding matrix” \cite{ref4:4}.
 
 \subsection{Example 1}
