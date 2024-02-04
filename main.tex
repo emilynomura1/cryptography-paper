@@ -50,7 +50,7 @@ One of the most basic examples of cryptography is the Caesar Cipher, also known 
 The encryption of a Caesar Cipher can be expressed as an equation \cite{ref3:3}:
 
 $$ E_{n}(x) = x + n  (\text{mod }26)$$\\
-The decryption process can be expressed similarly.
+The decryption process can be expressed similarly:
 
 $$ D_{n}(x) = x - n  (\text{mod }26)$$
 
@@ -58,31 +58,28 @@ $$ D_{n}(x) = x - n  (\text{mod }26)$$
 The Caesar Cipher is a simple and well-known form of encryption that is easy to understand. However, it is not a safe or reliable way to encrypt sensitive information. There are many more advanced forms of cryptography, some of which rely on linear algebraic operations.
 
 \section{Linear Algebra Applications}
-Many governments in this day and age are using more and more sophisticated and complicated methods of coding and decoding to try and keep information private. One of the best ways of performing encryptions is with a simple 3 by 3 matrix. The first matrix given is dubbed the “encoding matrix” while its inverse is called the “decoding matrix” \cite{ref4:4}.
+As data breaches become commonplace, many businesses are using more sophisticated means of encryption in order to ensure privacy to their users. One method of performing encryption is with a simple 3 by 3 matrix. This method uses one matrix called an ``encoding matrix" and its inverse, the ``decoding matrix"\cite{ref4:4}.
 
-\subsection{Example 1}
-The following example can be found at the second reference source, and uses a 3 by 3 matrix to enrypt and then decrypt the message PREPARE TO NEGOTIATE.
-{\center
-Encoding matrix = 
-$$
+\subsection{An Example From Kessler}
+This encryption example is given by Kessler and has been summarized for the purposes of this paper \cite{ref2:2}. A 3 by 3 matrix can be used to both enrypt and decrypt a message. In this case, the message is ``PREPARE TO NEGOTIATE."
+%{\center
+%Encoding matrix = 
+$$\text{Encoding matrix}=
 \begin{bmatrix}
 -3 & -3 & -4 \\
 0 & 0 & 1 \\
 4 & 3 & 4 
 \end{bmatrix}
 $$
-\endcenter}
+%\endcenter}
 
 \noindent
-The message consists of three words; each letter of this message will correspond to a certain number. For the simplicity of this particular example, each letter will be associated with its corresponding position in the alphabet. For example, “A” will be assigned to the value “1,” “B” to “2,” and so on. For a space, which, in this case, will occur twice since there are three words and two spaces in between each word, will correspond to the number 27, one number after 26 which corresponds to the last letter of the alphabet, “Z.” The message, once translated into the corresponding numbers, becomes this sequence of numbers:
-
+Each letter of this message will correspond to a certain number. For simplicity, each letter will be associated with its corresponding position in the alphabet. For example, ``A” will be assigned to the value ``1,” ``B” to ``2,” and so on. A space between words will correspond to the number 27. According to this letter to number association rule, the message can then be rewritten as this sequence of numbers:
 $$
-16, 18, 5, 16, 1, 18, 5, 27, 20, 15, 27, 14, 5, 7, 15, 20, 9, 1, 20, 5
+\{16, 18, 5, 16, 1, 18, 5, 27, 20, 15, 27, 14, 5, 7, 15, 20, 9, 1, 20, 5\}
 $$
-
-\noindent
-Since the encoding matrix is a 3 by 3 matrix, the message will then be broken up into a sequence of column vectors that are size 3. This will look as follows:
-
+%\noindent
+Since the encoding matrix is a 3 by 3 matrix, the message should be broken up into a sequence of column vectors of size 3:
 $$
 \begin{bmatrix}
 16\\
@@ -119,11 +116,9 @@ $$
 5\\
 27
 \end{bmatrix}
-$$ \\
-
-\noindent
-As one might notice, the message contains 20 characters total including the spaces. There are 7 column vectors of size 3, meaning that there are actually 21 characters when put in this format. This is because each vector MUST be of size 3 since we will be multiplying them with the encoding matrix. Thus, a 27 must be added at the end of the message representing a space to keep all vectors of the same size. Next, the sequence of column vectors are put together into a 3 by 7 matrix, and multiplied with the encoding matrix. This computation step will look like this:
-
+$$ 
+%\noindent
+The message contains a total of 20 characters, including the spaces between words. In the numeric representation, there are 7 column vectors of size 3, meaning that there are actually 21 characters in the numeric format. This is because each vector must be of size 3 since they will be multiplied with the 3 by 3 encoding matrix. Thus, a 27 must be added at the end of the message in order to keep all of the vectors the same size. The column vectors are coerced together into a 3 by 7 matrix and  multiplied with the encoding matrix.
 $$
 \begin{bmatrix}
 -3 & -3 & -4 \\
@@ -137,201 +132,195 @@ $$
 5 & 18 & 20 & 14 & 15 & 1 & 27
 \end{bmatrix}
 $$
-\\
-\noindent
-Since we are multiplying a 3 by 3 matrix with a 3 by 7 matrix, this matrix multiplication is possible since n = 3 in the first matrix and m = 3 in the second matrix. The resulting matrix will be a 3 by 7 matrix that looks like this:
-
-{\center
-Message matrix =
-$$
+This matrix multiplication is valid since $n=3$ in the first matrix and $m=3$ in the second matrix.
+%{\center
+%Message matrix =
+$$\text{Message matrix =}
 \begin{bmatrix}
 -122 & -123 & -176 & -182 & -96 & -91 & -183 \\
 23 & 19 & 47 & 41 & 22 & 10 & 32 \\
 138 & 139 & 181 & 197 & 101 & 111 & 203
 \end{bmatrix}
 $$
-\endcenter}
-\\
-\noindent
-The work done up until this point is done by the sender. The receiver will receive this 3 by 7 matrix and the encoding matrix. Then, they will proceed to decode this matrix. In order to decode this 3 by 7 matrix, the receiver must find the inverse of the encoding matrix to get the decoding matrix. As we learned in class, the inverse of a 3 by 3 matrix can be found easily by expanding the 3 by 3 matrix into a 3 by 6 matrix with the standard 3 by 3 matrix as the rightmost 3 columns. Row operations are used to get the standard 3 by 3 matrix on the left size, and the corresponding matrix on the right side is the inverse of the original matrix. For simplicity, the inverse of the matrix, also known as the decoding matrix, has already been computed.
-
-{\center
-Decoding matrix =
-$$
+%\endcenter}
+The work up to this point should be done by the sender. The receiver will acquire the 3 by 7 message matrix as well as the encoding matrix. Then, they will proceed to decode the message. In order to decode the message matrix, the receiver must compute the decoding matrix by finding the inverse of the encoding matrix. The inverse of a 3 by 3 matrix can be found easily by expanding the original matrix into a 3 by 6 matrix with the standard 3 by 3 matrix padding the original matrix to the right. Row operations can be used to ``move" the standard 3 by 3 matrix to the left half of the expanded matrix. The resulting matrix is the inverse of the encoding matrix, or the decoding matrix.
+%{\center
+%Decoding matrix =
+$$\text{Decoding matrix =}
 \begin{bmatrix}
 1 & 0 & 1 \\
 4 & 4 & 3 \\
 -4 & -3 & -3
 \end{bmatrix}
 $$
-\endcenter}
-
-\noindent
-After the decoding matrix is computed, it is multiplied by the 3 by 7 matrix that the receiver received in order to get the final 3 by 7 matrix. This matrix is then expanded by the receiver going through each successive column vector (of size 3) and is translated to each corresponding letter of the alphabet. Below is the resulting matrix and the corresponding sequence of numbers which is the same as earlier depicted. This sequence of numbers exactly corresponds to the original message, PREPARE TO NEGOTIATE. The multiplication of the decoding matrix with the message is not shown. It will be shown in Example 2. \\
-\\
-{\center
+%\endcenter}
+After the decoding matrix is calculated, it is multiplied by the message matrix. The receiver should then expand the final matrix in a column-wise fashion, generate a sequence of numbers, and translate the message from numeric values to letters.
+%{\center
 $$
 \begin{bmatrix}
 16 & 16 & 5 & 15 & 5 & 20 & 20 \\
 18 & 1 & 27 & 27 & 7 & 9 & 5 \\
 5 & 18 & 20 & 14 & 15 & 1 & 27
-\end{bmatrix} \\
-16, 18, 5, 16, 1, 18, 5, 27, 20, 15, 27, 14, 5, 7, 15, 20, 9, 1, 20, 5
+\end{bmatrix}
 $$
-\endcenter}
-
+$$
+\{16, 18, 5, 16, 1, 18, 5, 27, 20, 15, 27, 14, 5, 7, 15, 20, 9, 1, 20, 5\}
+$$
+%\endcenter}
 {\center
 Message = PREPARE TO NEGOTIATE
 \endcenter}
 
-\subsection{Example 2}
-\noindent
-This original example follows the same format as Example 1. The receiver will receive both the encoding matrix and the message matrix. They will do the computation below which includes computing the inverse of the encoding matrix and multiplying it with the message matrix. The receiver will then translate each number to the corresponding letter in order to decode the message. \\
+\subsection{A Custom Example}
+%\noindent
+This example follows the same format as the example from Kessler. The receiver has accesss to both the encoding matrix and the message matrix. They should follow 3 main steps to decode the message:\\
 
-\noindent
-Message = I LOVE MATH TO A CERTAIN EXTENT \\
-
-\noindent
-Sequence of numbers = 
+\begin{enumerate}
+    \item Compute the inverse of the encoding matrix to find the decoding matrix
+    \item Multiply the decoding matrix with the message matrix
+    \item Translate each numeric value to its corresponding letter
+\end{enumerate}
+%\noindent
+%Message = I LOVE MATH TO A CERTAIN EXTENT \\
+%\noindent
+%Sequence of numbers = 
+%$$
+%9, 27, 12, 5, 22, 5, 27, 13, 1, 20, 8, 27, 20, 15, 27, 1, 27, %3, 5, 18, 20, 1, 9, 14, 27, 5, 24, 20, 5, 14, 20
+%$$
+%{\center
+%Message = 
+%$$
+%\begin{bmatrix}
+%9\\
+%27\\
+%12
+%\end{bmatrix}
+%\begin{bmatrix}
+%15\\
+%22\\
+%5
+%\end{bmatrix}
+%\begin{bmatrix}
+%27\\
+%13\\
+%1
+%\end{bmatrix}
+%\begin{bmatrix}
+%20\\
+%8\\
+%27
+%\end{bmatrix}
+%\begin{bmatrix}
+%20\\
+%15\\
+%27
+%\end{bmatrix}
+%\begin{bmatrix}
+%1\\
+%27\\
+%3
+%\end{bmatrix}
+%\begin{bmatrix}
+%5\\
+%18\\
+%20
+%\end{bmatrix}
+%\begin{bmatrix}
+%1\\
+%9\\
+%14
+%\end{bmatrix}
+%\begin{bmatrix}
+%27\\
+%5\\
+%24
+%\end{bmatrix}
+%\begin{bmatrix}
+%20\\
+%5\\
+%14
+%\end{bmatrix}
+%\begin{bmatrix}
+%20\\
+%27\\
+%27
+%\end{bmatrix}
+%$$ \\
+%Encoding matrix = 
+%$$
+%\begin{bmatrix}
+%3 & 3 & -1\\
+%-2 & -2 & 1\\
+%-4 & -5 & 2
+%\end{bmatrix}
+%$$
+%\endcenter}
+%\noindent
+%Multiplying the encoding matrix and message composed of column vectors of size 3 to find the message matrix:
+%{\center
+%$$
+%\begin{bmatrix}
+%3 & 3 & -1 \\
+%-2 & -2 & 1 \\
+%-4 & -5 & 2
+%\end{bmatrix}
+%\quad
+%\begin{bmatrix}
+%9 & 15 & 27 & 20 & 20 & 1 & 5 & 1 & 27 & 20 & 20 \\
+%27 & 22 & 13 & 8 & 15 & 27 & 18 & 9 & 5 & 5 & 27\\
+%12 & 5 & 1 & 27 & 27 & 3 & 20 & 14 & 24 & 14 & 27
+%\end{bmatrix}
+%$$ \\
+%Message matrix =
+$$\text{Message matrix =}
+\begin{bmatrix}
+96 & 106 & 115 & 57 & 78 & 81 & 49 & 16 & 72 & 61 & 114\\
+-60 & -69 & -79 & -29 & -43 & -53 & -26 & -6 & -40 & -36 & -67 \\
+-147 & -160 & -171 & -66 & -101 & -133 & -70 & -21 & -85 & -77 & -161
+\end{bmatrix}
 $$
-9, 27, 12, 5, 22, 5, 27, 13, 1, 20, 8, 27, 20, 15, 27, 1, 27, 3, 5, 18, 20, 1, 9, 14, 27, 5, 24, 20, 5, 14, 20
-$$
-{\center
-Message = 
-$$
-\begin{bmatrix}
-9\\
-27\\
-12
-\end{bmatrix}
-\begin{bmatrix}
-15\\
-22\\
-5
-\end{bmatrix}
-\begin{bmatrix}
-27\\
-13\\
-1
-\end{bmatrix}
-\begin{bmatrix}
-20\\
-8\\
-27
-\end{bmatrix}
-\begin{bmatrix}
-20\\
-15\\
-27
-\end{bmatrix}
-\begin{bmatrix}
-1\\
-27\\
-3
-\end{bmatrix}
-\begin{bmatrix}
-5\\
-18\\
-20
-\end{bmatrix}
-\begin{bmatrix}
-1\\
-9\\
-14
-\end{bmatrix}
-\begin{bmatrix}
-27\\
-5\\
-24
-\end{bmatrix}
-\begin{bmatrix}
-20\\
-5\\
-14
-\end{bmatrix}
-\begin{bmatrix}
-20\\
-27\\
-27
-\end{bmatrix}
-$$ \\
-
-Encoding matrix = 
-$$
-\begin{bmatrix}
-3 & 3 & -1\\
--2 & -2 & 1\\
--4 & -5 & 2
-\end{bmatrix}
-$$
-\endcenter}
-
-\noindent
-Multiplying the encoding matrix and message composed of column vectors of size 3 to find the message matrix:
-{\center
-$$
+$$\text{Encoding matrix =}
 \begin{bmatrix}
 3 & 3 & -1 \\
 -2 & -2 & 1 \\
 -4 & -5 & 2
-\end{bmatrix}
-\quad
-\begin{bmatrix}
-9 & 15 & 27 & 20 & 20 & 1 & 5 & 1 & 27 & 20 & 20 \\
-27 & 22 & 13 & 8 & 15 & 27 & 18 & 9 & 5 & 5 & 27\\
-12 & 5 & 1 & 27 & 27 & 3 & 20 & 14 & 24 & 14 & 27
-\end{bmatrix}
-$$ \\
-Message matrix =
-$$
-\begin{bmatrix}
-96 & 106 & 115 & 57 & 78 & 81 & 49 & 16 & 72 & 61 & 114\\
--60 & -69 & -79 & -29 & -43 & -53 & -26 & -6 & -40 & -36 & -67 \\
--147 & -160 & -171 & -66 & -101 & -133 & -70 & -21 & -85 & -77 & -161
-\end{bmatrix}
-$$ \\
-Decoding matrix =
-$$
+\end{bmatrix}$$
+%Decoding matrix =
+$$\text{Decoding matrix =}
 \begin{bmatrix}
 1 & -1 & 1\\
 0 & 2 & -1\\
 2 & 3 & 0
 \end{bmatrix}
 $$
-\endcenter}
-
-\noindent
-Multiplying the decoding matrix and message matrix to find the original message which can then be converted to the corresponding letters:
+%\endcenter}
+%{\center
+$$
+\begin{bmatrix}
+1 & -1 & 1\\
+0 & 2 & -1\\
+2 & 3 & 0
+\end{bmatrix}
+\quad
+\begin{bmatrix}
+96 & 106 & 115 & 57 & 78 & 81 & 49 & 16 & 72 & 61 & 114\\
+-60 & -69 & -79 & -29 & -43 & -53 & -26 & -6 & -40 & -36 & -67 \\
+-147 & -160 & -171 & -66 & -101 & -133 & -70 & -21 & -85 & -77 & -161
+\end{bmatrix}
+$$ 
+%Final message =
+$$\text{Decoded message matrix =}
+\begin{bmatrix}
+9 & 15 & 27 & 20 & 20 & 1 & 5 & 1 & 27 & 20 & 20 \\
+27 & 22 & 13 & 8 & 15 & 27 & 18 & 9 & 5 & 5 & 27\\
+12 & 5 & 1 & 27 & 27 & 3 & 20 & 14 & 24 & 14 & 27
+\end{bmatrix}
+$$
+$$
+\{9, 27, 12, 15, 22, 5, 27, 13, 1, 20, 8, 27, 20, 15, 27, 1, 27, 3, 5, 18, 20, 1, 9, 14, 27, 5, 24, 20, 5, 14, 20\}
+$$
 {\center
-$$
-\begin{bmatrix}
-1 & -1 & 1\\
-0 & 2 & -1\\
-2 & 3 & 0
-\end{bmatrix}
-\quad
-\begin{bmatrix}
-96 & 106 & 115 & 57 & 78 & 81 & 49 & 16 & 72 & 61 & 114\\
--60 & -69 & -79 & -29 & -43 & -53 & -26 & -6 & -40 & -36 & -67 \\
--147 & -160 & -171 & -66 & -101 & -133 & -70 & -21 & -85 & -77 & -161
-\end{bmatrix}
-$$ \\
-
-Final message =
-$$
-\begin{bmatrix}
-9 & 15 & 27 & 20 & 20 & 1 & 5 & 1 & 27 & 20 & 20 \\
-27 & 22 & 13 & 8 & 15 & 27 & 18 & 9 & 5 & 5 & 27\\
-12 & 5 & 1 & 27 & 27 & 3 & 20 & 14 & 24 & 14 & 27
-\end{bmatrix}
-$$
-
-Sequence of numbers =
-$$
-9, 27, 12, 5, 22, 5, 27, 13, 1, 20, 8, 27, 20, 15, 27, 1, 27, 3, 5, 18, 20, 1, 9, 14, 27, 5, 24, 20, 5, 14, 20
-$$
-
-Message = I LOVE MATH TO A CERTAIN EXTENT
+Final message = ``I LOVE MATH TO A CERTAIN EXTENT"
 \endcenter}
 
 \section{Conclusion}
