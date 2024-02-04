@@ -271,20 +271,23 @@ This example follows the same format as the example from Kessler. The receiver h
 %12 & 5 & 1 & 27 & 27 & 3 & 20 & 14 & 24 & 14 & 27
 %\end{bmatrix}
 %$$ \\
-%Message matrix =
-$$\text{Message matrix =}
-\begin{bmatrix}
-96 & 106 & 115 & 57 & 78 & 81 & 49 & 16 & 72 & 61 & 114\\
--60 & -69 & -79 & -29 & -43 & -53 & -26 & -6 & -40 & -36 & -67 \\
--147 & -160 & -171 & -66 & -101 & -133 & -70 & -21 & -85 & -77 & -161
-\end{bmatrix}
-$$
 $$\text{Encoding matrix =}
 \begin{bmatrix}
 3 & 3 & -1 \\
 -2 & -2 & 1 \\
 -4 & -5 & 2
 \end{bmatrix}$$
+%Message matrix =
+\begin{center}
+    Message matrix =
+\end{center}
+$$
+\begin{bmatrix}
+96 & 106 & 115 & 57 & 78 & 81 & 49 & 16 & 72 & 61 & 114\\
+-60 & -69 & -79 & -29 & -43 & -53 & -26 & -6 & -40 & -36 & -67 \\
+-147 & -160 & -171 & -66 & -101 & -133 & -70 & -21 & -85 & -77 & -161
+\end{bmatrix}
+$$
 %Decoding matrix =
 $$\text{Decoding matrix =}
 \begin{bmatrix}
@@ -295,19 +298,19 @@ $$\text{Decoding matrix =}
 $$
 %\endcenter}
 %{\center
-$$
-\begin{bmatrix}
-1 & -1 & 1\\
-0 & 2 & -1\\
-2 & 3 & 0
-\end{bmatrix}
-\quad
-\begin{bmatrix}
-96 & 106 & 115 & 57 & 78 & 81 & 49 & 16 & 72 & 61 & 114\\
--60 & -69 & -79 & -29 & -43 & -53 & -26 & -6 & -40 & -36 & -67 \\
--147 & -160 & -171 & -66 & -101 & -133 & -70 & -21 & -85 & -77 & -161
-\end{bmatrix}
-$$ 
+%$$
+%\begin{bmatrix}
+%1 & -1 & 1\\
+%0 & 2 & -1\\
+%2 & 3 & 0
+%\end{bmatrix}
+%\quad
+%\begin{bmatrix}
+%96 & 106 & 115 & 57 & 78 & 81 & 49 & 16 & 72 & 61 & 114\\
+%-60 & -69 & -79 & -29 & -43 & -53 & -26 & -6 & -40 & -36 & -67 %\\
+%-147 & -160 & -171 & -66 & -101 & -133 & -70 & -21 & -85 & -77 %& -161
+%\end{bmatrix}
+%$$ 
 %Final message =
 $$\text{Decoded message matrix =}
 \begin{bmatrix}
@@ -317,14 +320,16 @@ $$\text{Decoded message matrix =}
 \end{bmatrix}
 $$
 $$
-\{9, 27, 12, 15, 22, 5, 27, 13, 1, 20, 8, 27, 20, 15, 27, 1, 27, 3, 5, 18, 20, 1, 9, 14, 27, 5, 24, 20, 5, 14, 20\}
+\{9, 27, 12, 15, 22, 5, 27, 13, 1, 20, 8, 27, 20, 15, 27,
 $$
-{\center
+$$1, 27, 3, 5, 18, 20, 1, 9, 14, 27, 5, 24, 20, 5, 14, 20\}
+$$
+\begin{center}
 Final message = ``I LOVE MATH TO A CERTAIN EXTENT"
-\endcenter}
+\end{center}
 
 \section{Conclusion}
-This relatively simple example of encryption through a 3 by 3 matrix is highly effective; at least much more effective than a Caesar Cipher. However, it is important to remember that although encryption is necessary for secure communications, it is not sufficient enough by itself. Many other steps are necessary for the utmost security. There are many levels to cryptography, ranging from simple (like the Caesar Cipher) to medium difficulty (like using matrix multiplication and inverses) to a variety of nearly unbreakable methods that top-notch governments and cryptographers use. As one of the most interesting applications of linear algebra, Cryptography is a complicated yet rewarding process that will be used and implemented well into the future. \\
+This relatively simple example of encryption using a 3 by 3 matrix is much more effective than something like a Caesar Cipher. Although encryption is necessary for secure communications, it is not sufficient enough by itself. There are many complexity ranges of cryptography, from simple encryption tasks to nearly unbreakable methods that governments deploy. Cryptography is a complicated yet rewarding process with interesting and relevant applications to linear algebra. \\
 
 \newpage
 \bibliography{references}
